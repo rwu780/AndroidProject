@@ -43,11 +43,10 @@ public class MainActivity extends AppCompatActivity {
         accountManagement = AccountManagement.getInstance();
 
 
-        createAccountButton = findViewById(R.id.btn_create_account);
+        createAccountButton = findViewById(R.id.btn_mainActivity_create_account);
         createAccountButton.setOnClickListener(view -> {
             Intent createAccountIntent = new Intent(MainActivity.this, CreateAccountActivity.class);
-            createAccountIntent.putExtra(ACCOUNT_MANAGEMENT_KEY, accountManagement);
-
+//            createAccountIntent.putExtra(ACCOUNT_MANAGEMENT_KEY, accountManagement);
 //            getContent.launch(createAccountIntent);
             startActivity(createAccountIntent);
 

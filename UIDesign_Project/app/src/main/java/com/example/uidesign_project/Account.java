@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Patterns;
 
-public class Account implements Parcelable {
+public class Account {
+//    implements Parcelable {
 
     private String email_addr;
     private String password;
@@ -14,28 +15,6 @@ public class Account implements Parcelable {
         this.password = pwd;
 
     }
-
-    protected Account(Parcel in) {
-        email_addr = in.readString();
-        password = in.readString();
-    }
-
-    public static final Creator<Account> CREATOR = new Creator<Account>() {
-        @Override
-        public Account createFromParcel(Parcel in) {
-            return new Account(in);
-        }
-
-        @Override
-        public Account[] newArray(int size) {
-            return new Account[size];
-        }
-    };
-
-    public static boolean isValidEmail(String email){
-        return (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-    }
-
     public static boolean isValidPassword(String password) {
 
         if (password.length() < 8)
@@ -66,6 +45,10 @@ public class Account implements Parcelable {
         return password.equals(repeat_password);
     }
 
+    public static boolean isValidEmail(String email){
+        return (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+    }
+
     public String getEmail_addr() {
         return email_addr;
     }
@@ -82,15 +65,36 @@ public class Account implements Parcelable {
         this.password = password;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(email_addr);
-        parcel.writeString(password);
-
-    }
+//
+//    protected Account(Parcel in) {
+//        email_addr = in.readString();
+//        password = in.readString();
+//    }
+//
+//    public static final Creator<Account> CREATOR = new Creator<Account>() {
+//        @Override
+//        public Account createFromParcel(Parcel in) {
+//            return new Account(in);
+//        }
+//
+//        @Override
+//        public Account[] newArray(int size) {
+//            return new Account[size];
+//        }
+//    };
+//
+//
+//
+//
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel parcel, int i) {
+//        parcel.writeString(email_addr);
+//        parcel.writeString(password);
+//
+//    }
 }

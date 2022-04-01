@@ -10,6 +10,7 @@ import android.accounts.AccountManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -79,15 +80,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         registerButtonListener();
         registerEmailListener();
         registerPasswordListener();
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Intent data = new Intent();
-        data.putExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY, accountManager);
-        setResult(RESULT_OK, data);
 
     }
 
@@ -175,10 +167,13 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void initView() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
+
+
         et_email = findViewById(R.id.et_email_addr);
         et_create_password = findViewById(R.id.et_create_password);
         et_repeat_password = findViewById(R.id.et_repeat_password);
         account_submit_button = findViewById(R.id.btn_create_account_submit);
+        disableButton();
     }
 
     private void showValidEmail(){
@@ -255,12 +250,29 @@ public class CreateAccountActivity extends AppCompatActivity {
         tv.setText(msg);
 
         frame.addView(error_view);
+        disableButton();
 
     }
 
     private void hideErrorContainer(int id){
         FrameLayout frame = findViewById(id);
         frame.removeAllViews();
+
+        if(isPasswordValid && isEmailValid)
+            enableButton();
+    }
+
+    private void disableButton(){
+        account_submit_button.setClickable(false);
+        account_submit_button.setAlpha(.4f);
+//        account_submit_button.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+    }
+
+    private void enableButton(){
+        account_submit_button.setClickable(true);
+        account_submit_button.setAlpha(1);
+
+//        account_submit_button.getBackground().setColorFilter(null);
     }
 
 

@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/logo_green_flag" />
 
     <Button
-        android:id="@+id/btn_create_account"
+        android:id="@+id/btn_mainActivity_create_account"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"

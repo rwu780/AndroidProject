@@ -7,7 +7,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountManagement implements Parcelable {
+public class AccountManagement{
+//        implements Parcelable
+
     
     private static final String TAG = "AccountManagement";
     private static final AccountManagement manager = new AccountManagement();
@@ -23,22 +25,10 @@ public class AccountManagement implements Parcelable {
         return manager;
     }
 
-    public AccountManagement(Parcel parcel){
-        account_list = new ArrayList<>();
-        parcel.readList(account_list, Account.class.getClassLoader());
+    public void add(Account newAccount){
+        account_list.add(newAccount);
+        Log.d(TAG, "add: " + account_list.size());
     }
-
-    public static final Creator<AccountManagement> CREATOR = new Creator<AccountManagement>() {
-        @Override
-        public AccountManagement createFromParcel(Parcel in) {
-            return new AccountManagement(in);
-        }
-
-        @Override
-        public AccountManagement[] newArray(int size) {
-            return new AccountManagement[size];
-        }
-    };
 
     public boolean isAccountExist(String email){
         for(Account a: account_list)
@@ -47,20 +37,32 @@ public class AccountManagement implements Parcelable {
 
         return false;
     }
+//
+//    public AccountManagement(Parcel parcel){
+//        account_list = new ArrayList<>();
+//        parcel.readList(account_list, Account.class.getClassLoader());
+//    }
+//
+//    public static final Creator<AccountManagement> CREATOR = new Creator<AccountManagement>() {
+//        @Override
+//        public AccountManagement createFromParcel(Parcel in) {
+//            return new AccountManagement(in);
+//        }
+//
+//        @Override
+//        public AccountManagement[] newArray(int size) {
+//            return new AccountManagement[size];
+//        }
+//    };
 
-    public void add(Account newAccount){
-        account_list.add(newAccount);
-        Log.d(TAG, "add: " + account_list.size());
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeList(account_list);
-
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel parcel, int i) {
+//        parcel.writeList(account_list);
+//
+//    }
 }
