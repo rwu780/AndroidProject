@@ -66,19 +66,28 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         initView();
 
-        Intent intent = getIntent();
-        Parcelable obj = intent.getParcelableExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY);
-
-        if( obj instanceof AccountManagement){
-            accountManager = (AccountManagement) obj;
-        }
-        else{
-            accountManager = new AccountManagement();
-        }
+        accountManager = AccountManagement.getInstance();
+//        Intent intent = getIntent();
+//        Parcelable obj = intent.getParcelableExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY);
+//        if( obj instanceof AccountManagement){
+//            accountManager = (AccountManagement) obj;
+//        }
+//        else{
+//            accountManager = new AccountManagement();
+//        }
 
         registerButtonListener();
         registerEmailListener();
         registerPasswordListener();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent data = new Intent();
+        data.putExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY, accountManager);
+        setResult(RESULT_OK, data);
 
     }
 
@@ -151,9 +160,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                         accountManager.add(new Account(user_email, password));
 
-                        Intent data = new Intent();
-                        data.putExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY, accountManager);
-                        setResult(RESULT_OK, data);
+//                        Intent data = new Intent();
+//                        data.putExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY, accountManager);
+//                        setResult(RESULT_OK, data);
 
                         finish();
                         toast_message("Account created successfully");

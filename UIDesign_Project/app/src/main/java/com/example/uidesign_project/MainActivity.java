@@ -23,24 +23,24 @@ public class MainActivity extends AppCompatActivity {
 
     private Button createAccountButton;
     private AccountManagement accountManagement;
-
-    ActivityResultLauncher<Intent> getContent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == Activity.RESULT_OK){
-                        Intent data = result.getData();
-                        accountManagement = data.getParcelableExtra(ACCOUNT_MANAGEMENT_KEY);
-                    }
-                }
-            });
+//
+//    ActivityResultLauncher<Intent> getContent = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+//            new ActivityResultCallback<ActivityResult>() {
+//                @Override
+//                public void onActivityResult(ActivityResult result) {
+//                    if(result.getResultCode() == Activity.RESULT_OK){
+//                        Intent data = result.getData();
+//                        accountManagement = data.getParcelableExtra(ACCOUNT_MANAGEMENT_KEY);
+//                    }
+//                }
+//            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        accountManagement = new AccountManagement();
+        accountManagement = AccountManagement.getInstance();
 
 
         createAccountButton = findViewById(R.id.btn_create_account);
@@ -48,11 +48,8 @@ public class MainActivity extends AppCompatActivity {
             Intent createAccountIntent = new Intent(MainActivity.this, CreateAccountActivity.class);
             createAccountIntent.putExtra(ACCOUNT_MANAGEMENT_KEY, accountManagement);
 
-            getContent.launch(createAccountIntent);
-//            ActivityResultLauncher<Intent> launcher = registerForActivityResult()
-//            registerForActivityResult(createAccountIntent, 0);
-//            startActivityForResult(createAccountIntent, 0);
-//            s?tartActivity(createAccountIntent);
+//            getContent.launch(createAccountIntent);
+            startActivity(createAccountIntent);
 
         });
     }

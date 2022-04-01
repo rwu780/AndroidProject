@@ -10,12 +10,17 @@ import java.util.List;
 public class AccountManagement implements Parcelable {
     
     private static final String TAG = "AccountManagement";
+    private static final AccountManagement manager = new AccountManagement();
 
     List<Account> account_list;
 
     public AccountManagement() {
 
         this.account_list = new ArrayList<Account>();
+    }
+
+    public static AccountManagement getInstance(){
+        return manager;
     }
 
     public AccountManagement(Parcel parcel){
