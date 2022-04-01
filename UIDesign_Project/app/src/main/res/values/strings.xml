@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">UIDesign_Project</string>
     <string name="create_an_account">Create an account</string>
+    <string name="next">Next</string>
+    <string name="password_criteria">Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter. You can use special characters</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

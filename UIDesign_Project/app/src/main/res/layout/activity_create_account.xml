@@ -4,6 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".CreateAccountActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="30dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="30dp" />
+
+    <TextView
+        android:id="@+id/tv_email_addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Address"
+        android:textSize="20dp"
+        android:fontFamily="@font/museosans_500"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_top"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:id="@+id/et_email_addr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Email Address"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_addr" />
+
+    <FrameLayout
+        android:id="@+id/container_invalid_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/vertical_start"
+        app:layout_constraintEnd_toEndOf="@id/vertical_end"
+        app:layout_constraintTop_toBottomOf="@id/et_email_addr"
+        />
+
+    <TextView
+        android:id="@+id/tv_create_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Create password"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/container_invalid_email" />
+
+    <EditText
+        android:id="@+id/et_create_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/tv_create_password" />
+
+    <TextView
+        android:id="@+id/tv_repeat_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Repeat password"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/et_create_password" />
+
+    <EditText
+        android:id="@+id/et_repeat_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/tv_repeat_password" />
+
+    <FrameLayout
+        android:id="@+id/container_invalid_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/vertical_start"
+        app:layout_constraintEnd_toEndOf="@id/vertical_end"
+        app:layout_constraintTop_toBottomOf="@id/et_repeat_password"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/museosans_300"
+        android:text="@string/password_criteria"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_create_account_submit"
+        app:layout_constraintEnd_toEndOf="@id/vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start" />
+
+
+    <Button
+        android:id="@+id/btn_create_account_submit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/gradient_button_background"
+        android:text="@string/next"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/vertical_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

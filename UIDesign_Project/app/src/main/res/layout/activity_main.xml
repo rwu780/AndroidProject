@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -60,36 +60,36 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_header" />
 
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/list_item1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView_center"
+        app:layout_constraintTop_toBottomOf="@+id/textView_center"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
-            android:src="@drawable/tick" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/tick" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Car health updates"
-            android:textColor="@color/white"
-            android:fontFamily="@font/museosans_300"
-            android:textSize="15dp"
-            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Car health updates"
+        android:textColor="@color/white"
+        android:fontFamily="@font/museosans_300"
+        android:textSize="15dp"
+        />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout2"
+        android:id="@+id/list_item2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/layout1"
-        app:layout_constraintTop_toBottomOf="@+id/layout1"
+        app:layout_constraintStart_toStartOf="@+id/list_item1"
+        app:layout_constraintTop_toBottomOf="@+id/list_item1"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
@@ -112,8 +112,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/layout2"
-        app:layout_constraintTop_toBottomOf="@+id/layout2"
+        app:layout_constraintStart_toStartOf="@+id/list_item2"
+        app:layout_constraintTop_toBottomOf="@+id/list_item2"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 

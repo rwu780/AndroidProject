@@ -11,7 +11,14 @@
         android:theme="@style/Theme.UIDesign_Project">
         <activity
             android:name=".CreateAccountActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/create_an_account"
+            android:theme="@style/Theme.Design"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.uidesign_project.MainActivity" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
