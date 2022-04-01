@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Patterns;
 
-import java.util.regex.Pattern;
-
 public class Account implements Parcelable {
 
     private String email_addr;

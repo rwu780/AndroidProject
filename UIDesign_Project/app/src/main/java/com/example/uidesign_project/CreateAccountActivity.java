@@ -1,5 +1,6 @@
 package com.example.uidesign_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -16,6 +17,7 @@ import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -62,13 +64,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-
         initView();
 
-
         Intent intent = getIntent();
-
         Parcelable obj = intent.getParcelableExtra(MainActivity.ACCOUNT_MANAGEMENT_KEY);
+
         if( obj instanceof AccountManagement){
             accountManager = (AccountManagement) obj;
         }
