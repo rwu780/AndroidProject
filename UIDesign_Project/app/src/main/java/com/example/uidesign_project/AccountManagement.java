@@ -16,7 +16,7 @@ public class AccountManagement{
 
     List<Account> account_list;
 
-    public AccountManagement() {
+    private AccountManagement() {
 
         this.account_list = new ArrayList<Account>();
     }

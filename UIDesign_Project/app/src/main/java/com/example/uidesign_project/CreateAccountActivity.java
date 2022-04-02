@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -30,8 +31,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -169,8 +173,13 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private void initView() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_24);
 
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.custom_action_bar);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+        View actionBarView = actionBar.getCustomView();
+        ImageButton backButton = actionBarView.findViewById(R.id.action_bar_back_button);
+        backButton.setOnClickListener(view -> finish());
 
         et_email = findViewById(R.id.et_email_addr);
         et_create_password = findViewById(R.id.et_create_password);
@@ -247,13 +256,21 @@ public class CreateAccountActivity extends AppCompatActivity {
     private void showErrorContainer(int id, String msg){
         FrameLayout frame = findViewById(id);
 
+        disableButton();
+
+        TextView tvErrorMsg = frame.findViewById(R.id.tv_error_msg);
+        if(tvErrorMsg != null){
+
+            tvErrorMsg.setText(msg);
+            return;
+        }
+        
         View error_view = getLayoutInflater().inflate(R.layout.fragment_invalid, null);
         error_view.setBackground(getShare(inValidColor, Color.BLACK, 2));
         TextView tv = error_view.findViewById(R.id.tv_error_msg);
         tv.setText(msg);
 
         frame.addView(error_view);
-        disableButton();
 
     }
 
