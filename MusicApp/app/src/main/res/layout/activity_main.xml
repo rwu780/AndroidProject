@@ -24,28 +24,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorGravity="top"
-        >
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rock"
-            android:icon="@drawable/ic_baseline_home_24"
-
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Classic"
-            android:icon="@drawable/ic_baseline_dashboard_24"
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pop"
-            android:icon="@drawable/ic_baseline_notifications_24"
-            />
-    </com.google.android.material.tabs.TabLayout>
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

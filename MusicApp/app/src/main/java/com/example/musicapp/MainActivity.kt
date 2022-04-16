@@ -4,12 +4,14 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.core.view.get
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
 import com.example.musicapp.databinding.ActivityMainBinding
 import com.example.musicapp.ui.MusicFragmentAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,36 +36,15 @@ class MainActivity : AppCompatActivity() {
         val pagerAdapter = MusicFragmentAdapter(this)
         viewPager2.adapter = pagerAdapter
 
-        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager2.currentItem = tab!!.position
+        TabLayoutMediator(tabLayout, viewPager2){ tab, position ->
+            viewPager2.setCurrentItem(tab.position, true)
+            val (tabText, tabDrawable) = when (position) {
+                1 -> Pair(getString(R.string.classic), R.drawable.ic_baseline_dashboard_24)
+                2 -> Pair(getString(R.string.pop), R.drawable.ic_baseline_notifications_24)
+                else -> Pair(getString(R.string.rock), R.drawable.ic_baseline_home_24)
             }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
-
-        with(viewPager2) {
-            adapter = pagerAdapter
-
-            tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                    currentItem = tab!!.position
-                }
-
-                override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                override fun onTabReselected(tab: TabLayout.Tab?) {}
-            })
-
-            registerOnPageChangeCallback(object: OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    tabLayout.selectTab(tabLayout.getTabAt(position))
-                }
-
-            })
-        }
+            tab.text = tabText
+            tab.setIcon(tabDrawable)
+        }.attach()
     }
-
-
 }

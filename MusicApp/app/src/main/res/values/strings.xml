@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MusicApp</string>
+    <string name="rock">Rock</string>
+    <string name="classic">CLASSIC</string>
+    <string name="pop">Pop</string>
+    <string name="price">%1s USD</string>
+    <string name="toast_msg">Found %1s Results</string>
+
 </resources>
