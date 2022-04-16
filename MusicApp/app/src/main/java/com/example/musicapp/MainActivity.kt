@@ -1,15 +1,21 @@
 package com.example.musicapp
 
 import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.core.view.get
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
 import com.example.musicapp.databinding.ActivityMainBinding
+import com.example.musicapp.network.Song
 import com.example.musicapp.ui.MusicFragmentAdapter
+
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

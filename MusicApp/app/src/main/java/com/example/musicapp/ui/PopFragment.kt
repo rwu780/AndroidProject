@@ -52,6 +52,7 @@ class PopFragment: Fragment() {
             }
 
             override fun onFailure(call: Call<SongResponse>, t: Throwable) {
+                Toast.makeText(context, "Unable to load collections", Toast.LENGTH_SHORT).show()
                 showError(t.message ?: "Unknown Error")
             }
 

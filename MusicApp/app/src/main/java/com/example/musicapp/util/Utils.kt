@@ -1,6 +1,14 @@
 package com.example.musicapp.util
 
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import com.example.musicapp.network.Song
+
+
 const val TOTAL_FRAGMENT_COUNT = 3
+
 
 const val BASE_URL = "https://itunes.apple.com/"
 

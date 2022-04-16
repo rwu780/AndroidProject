@@ -13,4 +13,5 @@
     tools:listitem="@layout/music_item_layout"
     android:clipToPadding="false"
     />
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

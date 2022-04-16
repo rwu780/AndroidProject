@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,6 +43,7 @@ class ClassicFragment: Fragment() {
     }
 
     private fun getSongs() {
+
         SongApi.retrofitService.getClassic().enqueue(object : Callback<SongResponse> {
             override fun onResponse(call: Call<SongResponse>, response: Response<SongResponse>) {
                 if (response.isSuccessful)
@@ -52,6 +54,7 @@ class ClassicFragment: Fragment() {
             }
 
             override fun onFailure(call: Call<SongResponse>, t: Throwable) {
+                Toast.makeText(context, "Unable to load collections", Toast.LENGTH_SHORT).show()
                 showError(t.message ?: "Unknown Error")
             }
         })
@@ -60,12 +63,14 @@ class ClassicFragment: Fragment() {
 
     private fun updateAdapter(body: SongResponse?) {
 
+
+
         body?.let {
             Toast.makeText(context, getString(R.string.toast_msg, it.resultCount.toString()), Toast.LENGTH_SHORT).show()
 
             it.results.let { songs ->
                 adapter = SongItemAdapter(songs){ song ->
-                    activity?.playSong(song)
+                    activity.playSong(song)
 
                 }
                 songList.adapter = adapter
@@ -89,13 +94,12 @@ class ClassicFragment: Fragment() {
         }
     }
 
-    private fun FragmentActivity.playSong(song: Song){
-        Log.d(TAG, "playSong: ")
+    private fun FragmentActivity?.playSong(song: Song) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(song.previewUrl))
         intent.setDataAndType(Uri.parse(song.previewUrl), "video/mp4")
-        activity?.startActivity(intent)
+        startActivity(intent)
 
     }
-
-
 }
+
+
