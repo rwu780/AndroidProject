@@ -1,5 +1,7 @@
 package com.example.musicapp.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -70,7 +72,10 @@ class RockFragment : Fragment() {
             Toast.makeText(context, getString(R.string.toast_msg,it.resultCount.toString()), Toast.LENGTH_SHORT).show()
 
             it.results.let { songs ->
-                adapter = SongItemAdapter(songs) {
+                adapter = SongItemAdapter(songs) { song ->
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(song.previewUrl))
+                    intent.setDataAndType(Uri.parse(song.previewUrl), "video/mp4")
+                    activity?.startActivity(intent)
 
                 }
                 rvSongList.adapter = adapter
