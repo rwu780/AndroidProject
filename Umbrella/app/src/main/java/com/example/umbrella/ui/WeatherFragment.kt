@@ -3,13 +3,20 @@ package com.example.umbrella.ui
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umbrella.R
 import com.example.umbrella.databinding.FragmentWeatherBinding
+import com.example.umbrella.viewmodel.WeatherListAdapter
+import com.example.umbrella.viewmodel.WeatherViewModel
+
+
 
 class WeatherFragment : Fragment() {
 
     private lateinit var binding : FragmentWeatherBinding
+    private val sharedViewModel : WeatherViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +35,16 @@ class WeatherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedViewModel.getWeather()
+
+        binding?.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = sharedViewModel
+            weatherFragment = this@WeatherFragment
+            weatherList.adapter = WeatherListAdapter(requireContext())
+            weatherList.layoutManager = LinearLayoutManager(context)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -46,8 +63,5 @@ class WeatherFragment : Fragment() {
             else ->super.onOptionsItemSelected(item)
         }
     }
-
-
-
 
 }

@@ -15,11 +15,6 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.umbrella.ui.SettingFragment"
-        android:label="SettingFragment" >
-        <action
-            android:id="@+id/action_settingFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment"
-            app:popUpTo="@id/weatherFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        android:label="SettingFragment" />
+
 </navigation>
