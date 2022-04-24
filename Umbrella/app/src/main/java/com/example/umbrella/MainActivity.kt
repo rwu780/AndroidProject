@@ -1,5 +1,6 @@
 package com.example.umbrella
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
+
+
 
     }
 

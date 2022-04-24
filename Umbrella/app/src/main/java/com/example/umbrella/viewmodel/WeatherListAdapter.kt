@@ -19,7 +19,7 @@ class WeatherListAdapter(val ctx: Context) :RecyclerView.Adapter<WeatherListAdap
 
             fun onBind(dataItem: String, maps: Map<String, List<WeatherDaily>>, ctx: Context){
                 binding.tvDateLabel.text = dataItem
-                binding.weatherRv.adapter = WeatherItemAdapter(maps[dataItem]!!)
+                binding.weatherRv.adapter = WeatherItemAdapter(ctx, maps[dataItem]!!)
                 binding.weatherRv.layoutManager = GridLayoutManager(ctx, 4)
             }
         }
