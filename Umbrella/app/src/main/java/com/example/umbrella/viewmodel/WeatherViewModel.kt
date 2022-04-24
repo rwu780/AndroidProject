@@ -120,7 +120,7 @@ class WeatherViewModel: ViewModel() {
             val (date_s, time_s) = output_date.split("\\s+".toRegex(), 2)
             val imageUrl =
                 "https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@2x.png"
-            val newItem = WeatherDaily(date_s, time_s, weatherItem.main.temp, imageUrl)
+            val newItem = WeatherDaily(date_s, time_s, weatherItem.main.temp, imageUrl, )
 
             mList.add(newItem)
 

@@ -1,5 +1,6 @@
 package com.example.umbrella.network
 
+import android.graphics.Color
 import java.math.BigInteger
 import java.util.*
 
@@ -38,7 +39,11 @@ data class WeatherDaily(
     val temperature: Float,
     val iconUrl: String,
     var isColdest: Boolean = false,
-    var isWarmest: Boolean = false
-)
+    var isWarmest: Boolean = false,
+    var colorCode: Int? = null
+) {
+    fun temperatureString() : String = temperature.toString()
+
+}
 
 
