@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.umbrella.R
 import com.example.umbrella.databinding.WeatherItemLayoutBinding
 import com.example.umbrella.network.WeatherDaily
-import com.google.android.material.color.MaterialColors.getColor
 import com.squareup.picasso.Picasso
 
 class WeatherItemAdapter(
@@ -25,17 +24,17 @@ class WeatherItemAdapter(
             Picasso.get().load(item.iconUrl).into(binding.ivIcon)
 
             if(item.isColdest){
-                binding.tvTime.setTextColor(ContextCompat.getColor(ctx, R.color.cold_weather))
-                binding.tvDegree.setTextColor(ContextCompat.getColor(ctx, R.color.cold_weather))
+                setTextColor(ctx, R.color.cold_weather)
+
             }
             if (item.isWarmest){
-                binding.tvTime.setTextColor(ContextCompat.getColor(ctx, R.color.hot_weather))
-                binding.tvDegree.setTextColor(ContextCompat.getColor(ctx, R.color.hot_weather))
-
+                setTextColor(ctx, R.color.hot_weather)
             }
+        }
 
-
-
+        private fun setTextColor(ctx: Context, colorCode: Int) {
+            binding.tvTime.setTextColor(ContextCompat.getColor(ctx, colorCode))
+            binding.tvDegree.setTextColor(ContextCompat.getColor(ctx, colorCode))
 
         }
 

@@ -37,6 +37,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             editText -> editText.inputType = InputType.TYPE_CLASS_NUMBER
         }
 
+
         findPreference<ListPreference>("units_select")?.value = shareViewModel.unit.value.toString()
 
         findPreference<ListPreference>("units_select")?.summaryProvider =

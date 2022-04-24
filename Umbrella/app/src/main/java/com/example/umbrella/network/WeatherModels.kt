@@ -32,30 +32,6 @@ class WeatherMain(
     val temp_max: Float
 )
 
-//data class WeatherDaily123(
-//    val date: String,
-//    val hourly: List<WeatherHourly>
-//) {
-//    fun findHottestAndColdest() {
-//        val coldest = hourly.map {
-//            it.temperature
-//        }.maxOrNull()
-//
-//        val hottest = hourly.map { it.temperature }.maxOrNull()
-//
-//        for (i in hourly){
-//            if (i.temperature == coldest){
-//                i.isColdest = true
-//            }
-//            if (i.temperature == hottest){
-//                i.isWarmest = true
-//            }
-//        }
-//
-//    }
-//
-//}
-
 data class WeatherDaily(
     val date: String,
     val time: String,

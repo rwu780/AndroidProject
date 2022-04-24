@@ -42,7 +42,6 @@ class WeatherListAdapter(val ctx: Context) :RecyclerView.Adapter<WeatherListAdap
         maps = itemList?.groupBy { it.date }?.filterValues {
             it.isNotEmpty()
         } ?: emptyMap()
-        Log.d(TAG, "updateItems: $maps")
         notifyDataSetChanged()
 
     }

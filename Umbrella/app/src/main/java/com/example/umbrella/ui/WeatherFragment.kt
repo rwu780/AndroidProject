@@ -64,6 +64,10 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (sharedViewModel.zip.value == null){
+            findNavController().navigate(R.id.action_weatherFragment_to_settingFragment)
+        }
+
         sharedViewModel.getWeather()
 
         binding?.apply {
@@ -74,7 +78,7 @@ class WeatherFragment : Fragment() {
         }
 
         sharedViewModel.city.observe(viewLifecycleOwner){
-            (requireActivity() as AppCompatActivity).supportActionBar?.title = sharedViewModel.city.value
+            updateTitleBar(sharedViewModel.city.value!!)
         }
 
         sharedViewModel.temperature.observe(viewLifecycleOwner){
@@ -83,20 +87,9 @@ class WeatherFragment : Fragment() {
                 Temperature_Unit.Fahrenheit -> 60f
                 else -> 15.56f
             }
-            if (sharedViewModel.temperature.value!! >= threshold){
-                binding.tvTemperature.setBackgroundColor(resources.getColor(R.color.hot_weather))
-                binding.tvWeatherDesc.setBackgroundColor(resources.getColor(R.color.hot_weather))
-                (requireActivity() as AppCompatActivity)
-                    .supportActionBar?.setBackgroundDrawable(
-                        ColorDrawable(resources.getColor(R.color.hot_weather)))
-            }
-            else {
-                binding.tvTemperature.setBackgroundColor(resources.getColor(R.color.cold_weather))
-                binding.tvWeatherDesc.setBackgroundColor(resources.getColor(R.color.cold_weather))
-                (requireActivity() as AppCompatActivity)
-                    .supportActionBar?.setBackgroundDrawable(
-                        ColorDrawable(resources.getColor(R.color.cold_weather)))
-            }
+            updateWeatherColor(
+                if (sharedViewModel.temperature.value!! >= threshold) R.color.hot_weather else R.color.cold_weather
+            )
         }
     }
 
@@ -115,6 +108,20 @@ class WeatherFragment : Fragment() {
             }
             else ->super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun updateTitleBar(title: String){
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = title
+    }
+
+    private fun updateWeatherColor(color: Int){
+        binding.tvTemperature.setBackgroundColor(resources.getColor(color))
+        binding.tvWeatherDesc.setBackgroundColor(resources.getColor(color))
+        (requireActivity() as AppCompatActivity)
+            .supportActionBar?.setBackgroundDrawable(
+                ColorDrawable(resources.getColor(color)))
+
+
     }
 
 }
