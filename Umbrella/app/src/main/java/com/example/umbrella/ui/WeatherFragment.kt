@@ -73,7 +73,7 @@ class WeatherFragment : Fragment() {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            weatherList.adapter = WeatherListAdapter(requireContext())
+            weatherList.adapter = WeatherListAdapter()
             weatherList.layoutManager = LinearLayoutManager(context)
         }
 

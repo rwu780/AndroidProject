@@ -10,17 +10,17 @@ import com.example.umbrella.databinding.WeatherCardItemLayoutBinding
 import com.example.umbrella.network.WeatherDaily
 
 private const val TAG = "WeatherListAdapter"
-class WeatherListAdapter(val ctx: Context) :RecyclerView.Adapter<WeatherListAdapter.WeatherViewHolder>() {
+class WeatherListAdapter() :RecyclerView.Adapter<WeatherListAdapter.WeatherViewHolder>() {
 
     private var maps: Map<String, List<WeatherDaily>> = emptyMap()
 
     class WeatherViewHolder(private val binding: WeatherCardItemLayoutBinding)
         : RecyclerView.ViewHolder(binding.root){
 
-            fun onBind(dataItem: String, maps: Map<String, List<WeatherDaily>>, ctx: Context){
+            fun onBind(dataItem: String, maps: Map<String, List<WeatherDaily>>){
                 binding.tvDateLabel.text = dataItem
                 binding.weatherRv.adapter = WeatherItemAdapter(maps[dataItem]!!)
-                binding.weatherRv.layoutManager = GridLayoutManager(ctx, 4)
+//                binding.weatherRv.layoutManager = GridLayoutManager(ctx, 4)
             }
         }
 
@@ -31,7 +31,7 @@ class WeatherListAdapter(val ctx: Context) :RecyclerView.Adapter<WeatherListAdap
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        holder.onBind(maps.keys.elementAt(position), maps, ctx = ctx)
+        holder.onBind(maps.keys.elementAt(position), maps)
     }
 
     override fun getItemCount(): Int {
