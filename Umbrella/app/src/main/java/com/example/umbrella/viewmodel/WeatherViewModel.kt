@@ -91,22 +91,24 @@ class WeatherViewModel: ViewModel() {
                 _temperature.value = _response!!.list[0].main.temp
                 _description.value = _response!!.list[0].weather[0].main
 
+                withContext(Dispatchers.Default){
+                    _weatherResponse.postValue(filterOutput())
+                }
 
-                filterOutput()
-                findHottestAndColdest()
 
             } catch (exception: Exception) {
                 _description.value = "Error, please check your settings"
                 _city.value = ""
                 _temperature.value = 0.00f
                 _weatherResponse.value = emptyList()
+                _response = null
                 exception.printStackTrace()
             }
         }
     }
 
     @SuppressLint("NewApi")
-    fun filterOutput() {
+    fun filterOutput() : List<WeatherDaily> {
         val mList = mutableListOf<WeatherDaily>()
 
         val input_formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
@@ -125,12 +127,16 @@ class WeatherViewModel: ViewModel() {
             mList.add(newItem)
 
         }
-        _weatherResponse.value = mList
+
         _response = null
+
+        findHottestAndColdest(mList)
+
+        return mList
     }
 
-    private fun findHottestAndColdest() {
-        val maps = _weatherResponse.value!!.groupBy { it.date }.filterValues {it.isNotEmpty()}
+    private fun findHottestAndColdest(mList: List<WeatherDaily>) {
+        val maps = mList.groupBy { it.date }.filterValues {it.isNotEmpty()}
 
         for (i in maps.keys){
             val coldest = maps[i]?.map { it.temperature }?.minOrNull()

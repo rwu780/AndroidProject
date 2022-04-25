@@ -21,7 +21,10 @@ fun bindWeatherRecyclerView(recyclerView: RecyclerView, data: List<WeatherDaily>
 fun bindImage(imgView: ImageView, imgUrl: String?){
 
     imgUrl?.let{
-        Picasso.get().load(imgUrl).into(imgView)
+        Picasso.get().load(imgUrl)
+            .placeholder(R.drawable.ic_baseline_downloading_24)
+            .error(R.drawable.ic_baseline_running_with_errors_24)
+            .into(imgView)
     }
 
 }
